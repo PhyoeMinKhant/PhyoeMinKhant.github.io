@@ -126,8 +126,69 @@ html {
     padding-top: 80px;
 }
 
+.hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    width: 100%;
+}
+
 .hero-content {
-    max-width: 800px;
+    max-width: 650px;
+    flex: 1;
+}
+
+/* Profile Photo */
+.hero-photo-wrap {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-photo-ring {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    padding: 4px;
+    background: var(--gradient);
+    animation: photo-float 6s ease-in-out infinite;
+    box-shadow:
+        0 0 40px rgba(139, 92, 246, 0.4),
+        0 0 80px rgba(59, 130, 246, 0.2);
+}
+
+.hero-photo-ring::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, var(--accent-1), var(--accent-2), var(--accent-1));
+    z-index: -1;
+    animation: spin-slow 8s linear infinite;
+    opacity: 0.6;
+    filter: blur(4px);
+}
+
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    border: 3px solid var(--bg-color);
+}
+
+@keyframes photo-float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-14px); }
+}
+
+@keyframes spin-slow {
+    to { transform: rotate(360deg); }
 }
 
 .badge {
@@ -535,5 +596,19 @@ footer {
     .footer-content {
         flex-direction: column;
         gap: 1.5rem;
+    }
+    .hero-inner {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2.5rem;
+        padding-top: 1rem;
+    }
+    .hero-photo-ring {
+        width: 200px;
+        height: 200px;
+    }
+    .hero-subtitle {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
