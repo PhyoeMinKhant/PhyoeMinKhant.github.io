@@ -3,124 +3,423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phyoe Min Khant | Full-Stack Engineer</title>
-    <!-- SEO tags -->
-    <meta name="description" content="Portfolio of Phyoe Min Khant, a full-stack software engineer and creative developer specializing in building premium web applications.">
+    <title>Phyoe Min Khant | Full Stack Developer & AI Specialist</title>
+    <meta name="description" content="Portfolio of Phyoe Min Khant — Final-year B.C.S.C student at UCSY, specializing in AI and full-stack development with Django, React, Next.js, PyTorch and more.">
+    <meta name="keywords" content="Phyoe Min Khant, Full Stack Developer, AI Specialist, Django, React, Python, UCSY, Myanmar">
+    <meta property="og:title" content="Phyoe Min Khant | Full Stack Developer & AI Specialist">
+    <meta property="og:description" content="Final-year B.C.S.C student at UCSY specializing in AI and full-stack development.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260403-1">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        (function () {
+            var stored = localStorage.getItem('theme');
+            var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 </head>
 <body>
-    <!-- Abstract Background Effects -->
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
     <div class="glow-sphere sphere-1"></div>
     <div class="glow-sphere sphere-2"></div>
+    <div class="glow-sphere sphere-3"></div>
 
     <!-- Navigation -->
     <header class="navbar" id="navbar">
-        <div class="logo">Dev.<span>Portfolio</span></div>
-        <nav>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-inner">
+            <a href="#home" class="logo">PMK<span>.</span></a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <button
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    type="button"
+                    role="switch"
+                    aria-checked="false"
+                    aria-label="Switch to light mode"
+                    title="Switch to light mode">
+                    <svg class="theme-icon theme-icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"/>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                    </svg>
+                    <span class="theme-toggle-track" aria-hidden="true">
+                        <span class="theme-toggle-knob"></span>
+                    </span>
+                    <svg class="theme-icon theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                    <span class="theme-toggle-text">Light</span>
+                </button>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <main>
-        <!-- Home / Hero Section -->
+        <!-- HERO -->
         <section id="home" class="hero">
             <div class="hero-inner">
-                <div class="hero-content hidden-fade">
-                    <span class="badge">Available for Work</span>
-                    <h1 class="hero-title">Crafting <br><span class="gradient-text">Digital Experiences</span></h1>
-                    <p class="hero-subtitle">I'm a full-stack software engineer and creative developer. I build premium web applications from end-to-end, specializing in both frontend interfaces and robust backend architectures.</p>
+                <div class="hero-content reveal">
+
+                    <h1 class="hero-title">
+                        Hi, I'm<br>
+                        <span class="gradient-text">Phyoe Min Khant</span>
+                    </h1>
+                    <div class="typewriter-wrap">
+                        <span class="typewriter" id="typewriter"></span><span class="cursor">|</span>
+                    </div>
+                    <p class="hero-subtitle">
+                        Final-year B.C.S.C student at the University of Computer Studies, Yangon.
+                        I build intelligent web applications and scalable systems — from sleek frontends to AI-powered backends.
+                    </p>
+                    <div class="hero-contacts">
+                        <a href="mailto:phyominkhant@ucsy.edu.mm" class="contact-chip" id="email-chip">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            phyominkhant@ucsy.edu.mm
+                        </a>
+                        <a href="https://github.com/PhyoeMinKhant" target="_blank" rel="noopener noreferrer" class="contact-chip" id="github-chip">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            PhyoeMinKhant
+                        </a>
+                        <a href="tel:+959787820831" class="contact-chip" id="phone-chip">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            09-787820831
+                        </a>
+                    </div>
                     <div class="hero-cta">
-                        <a href="#projects" class="btn btn-primary">See My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                        <a href="#projects" class="btn btn-primary" id="see-work-btn">See My Work</a>
+                        <a href="#contact" class="btn btn-secondary" id="get-in-touch-btn">Get In Touch</a>
                     </div>
                 </div>
-                <div class="hero-photo-wrap hidden-fade" style="transition-delay: 0.2s">
+                <div class="hero-photo-wrap reveal" style="transition-delay:0.25s">
                     <div class="hero-photo-ring">
-                        <img src="assets/profile.jpg?v=20260403-1" alt="Phyoe Min Khant" class="hero-photo" />
+                        <img src="assets/profile.jpg" alt="Phyoe Min Khant — Full Stack Developer and AI Specialist" class="hero-photo">
+                    </div>
+                    <div class="floating-badge badge-top" id="badge-ai">
+                        <span>🤖</span> AI Specialist
+                    </div>
+                    <div class="floating-badge badge-bottom" id="badge-dev">
+                        <span>💻</span> Full Stack Dev
+                    </div>
+                </div>
+            </div>
+            <a href="#about" class="scroll-hint" aria-label="Scroll down">
+                <div class="scroll-line"></div>
+            </a>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="about">
+            <div class="section-header reveal">
+                <span class="section-label">01 / About</span>
+                <h2>Who I Am</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <h3>Engineering with Passion &amp; Purpose</h3>
+                    <p>
+                        I'm a final-year <strong>B.C.S.C student at University of Computer Studies, Yangon (UCSY)</strong>,
+                        specializing in AI and full-stack development. I'm a strong problem-solver with
+                        real-world customer-facing experience, actively seeking internship opportunities
+                        in Software Engineering to apply and expand my practical skills.
+                    </p>
+                    <p>
+                        Whether it's architecting Django backends, crafting responsive React interfaces,
+                        building cross-platform desktop apps with Electron, or training PyTorch models —
+                        I enjoy the full spectrum of software development.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item" id="stat-projects">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-item" id="stat-languages">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-label">Languages</span>
+                        </div>
+                        <div class="stat-item" id="stat-frameworks">
+                            <span class="stat-number">4+</span>
+                            <span class="stat-label">Frameworks</span>
+                        </div>
+                        <div class="stat-item" id="stat-tools">
+                            <span class="stat-number">3+</span>
+                            <span class="stat-label">Cloud Platforms</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual reveal" style="transition-delay:0.15s">
+                    <div class="edu-card glass-card" id="edu-card">
+                        <div class="edu-icon">🎓</div>
+                        <div class="edu-info">
+                            <h4>B.C.S.C / B.C.Tech</h4>
+                            <p>University of Computer Studies, Yangon</p>
+                            <span class="edu-badge">Final Year · Seeking Internship in AI / SWE</span>
+                        </div>
+                    </div>
+                    <div class="glass-card focus-card" id="focus-card">
+                        <h4 class="focus-title">Areas of Focus</h4>
+                        <div class="focus-items">
+                            <div class="focus-item">
+                                <span class="focus-icon">🧠</span>
+                                <span>Artificial Intelligence &amp; ML</span>
+                            </div>
+                            <div class="focus-item">
+                                <span class="focus-icon">🌐</span>
+                                <span>Full-Stack Web Development</span>
+                            </div>
+                            <div class="focus-item">
+                                <span class="focus-icon">🖥️</span>
+                                <span>Cross-Platform Desktop Apps</span>
+                            </div>
+                            <div class="focus-item">
+                                <span class="focus-icon">☁️</span>
+                                <span>Cloud Deployment (AWS, GCP)</span>
+                            </div>
+                            <div class="focus-item">
+                                <span class="focus-icon">📡</span>
+                                <span>IoT &amp; Open Protocols</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="section-title hidden-fade">
-                <h2>About Phyoe Min Khant</h2>
-                <div class="line"></div>
+        <!-- EXPERIENCE -->
+        <section id="experience" class="experience">
+            <div class="section-header reveal">
+                <span class="section-label">02 / Experience</span>
+                <h2>Where I've Worked</h2>
+                <div class="section-line"></div>
             </div>
-            <div class="about-content hidden-fade">
-                <div class="about-text">
-                    <h3>Engineering with Passion</h3>
-                    <p>I specialize in building scalable, full-stack web applications and powerful desktop tools. From gorgeous frontend aesthetics to robust backend systems and data-driven desktop apps, my approach blends technical excellence with deep design sensibility.</p>
-                    <div class="skills-container">
-                        <span class="skill-tag">HTML5 & CSS3</span>
-                        <span class="skill-tag">JavaScript (ES6+)</span>
-                        <span class="skill-tag">React / Next.js</span>
-                        <span class="skill-tag">Python & Django</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">UI/UX Design</span>
-                        <span class="skill-tag">Tkinter</span>
+            <div class="timeline reveal">
+                <div class="timeline-item" id="exp-hotel">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3>Front Desk Staff</h3>
+                                <a href="https://sanchaung.hotelsinyangon.com/en/" target="_blank" rel="noopener noreferrer" class="company-link">
+                                    Hotel Sanchaung, Yangon ↗
+                                </a>
+                            </div>
+                            <span class="exp-period">Sept 2024 – Nov 2025</span>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>Managed restaurant and hotel POS system efficiently</li>
+                            <li>Coordinated with various departments to resolve customer requests and complaints</li>
+                            <li>Developed strong communication and problem-solving skills in a fast-paced hospitality environment</li>
+                        </ul>
+                        <div class="exp-tags">
+                            <span>POS Systems</span>
+                            <span>Customer Service</span>
+                            <span>Operations</span>
+                            <span>Team Coordination</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" id="exp-freelance">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-card">
+                        <div class="exp-header">
+                            <div>
+                                <h3>Content Writer &amp; Freelancer</h3>
+                                <span class="company-link company-link-static">Self-Employed</span>
+                            </div>
+                            <span class="exp-period">Ongoing</span>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>Produced technical and creative content for various clients</li>
+                            <li>Delivered freelance development and writing projects independently</li>
+                        </ul>
+                        <div class="exp-tags">
+                            <span>Technical Writing</span>
+                            <span>Freelancing</span>
+                            <span>Self-Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="skills">
+            <div class="section-header reveal">
+                <span class="section-label">03 / Skills</span>
+                <h2>Technical Toolkit</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category glass-card reveal" id="skill-languages" style="transition-delay:0.05s">
+                    <div class="skill-cat-header">
+                        <span class="skill-cat-icon">{ }</span>
+                        <h3>Languages</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category glass-card reveal" id="skill-frameworks" style="transition-delay:0.1s">
+                    <div class="skill-cat-header">
+                        <span class="skill-cat-icon">⚙️</span>
+                        <h3>Frameworks</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Electron</span>
+                    </div>
+                </div>
+                <div class="skill-category glass-card reveal" id="skill-libraries" style="transition-delay:0.15s">
+                    <div class="skill-cat-header">
+                        <span class="skill-cat-icon">📚</span>
+                        <h3>Libraries &amp; AI</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PyTorch</span>
                         <span class="skill-tag">Pandas</span>
                         <span class="skill-tag">Matplotlib</span>
-                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Tkinter</span>
                     </div>
                 </div>
-                <div class="about-visual">
-                    <div class="glass-card tech-stack">
-                        <div class="tech-icon">⚡</div>
-                        <h4>Fast & Dynamic</h4>
-                        <p>Driven by optimal performance and fluid micro-animations to enhance user engagement natively.</p>
+                <div class="skill-category glass-card reveal" id="skill-databases" style="transition-delay:0.2s">
+                    <div class="skill-cat-header">
+                        <span class="skill-cat-icon">🗄️</span>
+                        <h3>Databases</h3>
                     </div>
-                    <div class="glass-card tech-stack" style="margin-top: 1.5rem;">
-                        <div class="tech-icon">📊</div>
-                        <h4>Data Visualizer Pro</h4>
-                        <p>Windows desktop app built with Python & Tkinter — loads CSV files and generates interactive line, bar, pie, and tabular charts via Pandas & Matplotlib.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                    </div>
+                </div>
+                <div class="skill-category glass-card reveal" id="skill-devops" style="transition-delay:0.25s">
+                    <div class="skill-cat-header">
+                        <span class="skill-cat-icon">🚀</span>
+                        <h3>DevOps &amp; Cloud</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Google Cloud</span>
+                        <span class="skill-tag">GitHub</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- PROJECTS -->
         <section id="projects" class="projects">
-            <div class="section-title hidden-fade">
+            <div class="section-header reveal">
+                <span class="section-label">04 / Projects</span>
                 <h2>Selected Work</h2>
-                <div class="line"></div>
+                <div class="section-line"></div>
             </div>
             <div class="project-grid">
-                <!-- Project 1 -->
-                <div class="project-card hidden-fade" style="transition-delay: 0.1s">
-                    <div class="project-image" id="project1-img" style="background-image: url('assets/Guest_Main.png');">
+
+                <div class="project-card reveal" id="project-booking" style="transition-delay:0.05s">
+                    <div class="project-image" style="background-image:url('assets/Guest_Main.png')">
+                        <div class="project-overlay">
+                            <a href="https://github.com/PhyoeMinKhant/Booking" target="_blank" rel="noopener noreferrer" class="project-overlay-btn" id="booking-github-btn">View on GitHub ↗</a>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <h3>StayFinder</h3>
-                        <p>A dual-sided booking platform for guests to discover affordable, newer rooms and for hotels to seamlessly list their offerings alongside renowned competitors.</p>
+                        <div class="project-num">01</div>
+                        <h3>Hotel Booking System</h3>
+                        <p>A dual-sided Django web platform connecting hotels and guests — offering rich functionality, easy listing management, and real-time booking notifications.</p>
                         <div class="project-tags">
                             <span>Django</span>
                             <span>Python</span>
                             <span>HTML/CSS</span>
-                            <span>Pillow</span>
+                            <span>MySQL</span>
                         </div>
-                        <a href="https://github.com/PhyoeMinKhant/Booking" target="_blank" rel="noopener noreferrer" class="project-link">View Repository ↘</a>
+                        <a href="https://github.com/PhyoeMinKhant/Booking" target="_blank" rel="noopener noreferrer" class="project-link">
+                            View Repository
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </a>
                     </div>
                 </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card hidden-fade" style="transition-delay: 0.2s">
-                    <div class="project-image" id="project2-img" style="background-image: url('assets/project_data_visualizer.png');">
+
+                <div class="project-card reveal featured-card" id="project-coffee" style="transition-delay:0.1s">
+                    <div class="project-image project-image-placeholder ai-gradient">
+                        <div class="placeholder-icon">☕</div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/PhyoeMinKhant/coffee_shop_ai" target="_blank" rel="noopener noreferrer" class="project-overlay-btn" id="coffee-github-btn">View on GitHub ↗</a>
+                        </div>
+                        <div class="featured-tag">⭐ Featured</div>
                     </div>
                     <div class="project-info">
+                        <div class="project-num">02</div>
+                        <h3>Coffee Shop with AI</h3>
+                        <p>Cross-platform desktop POS application for a coffee shop with an integrated AI assistant for taking customer orders — built with Electron for seamless multi-platform support.</p>
+                        <div class="project-tags">
+                            <span>Electron</span>
+                            <span>AI</span>
+                            <span>JavaScript</span>
+                            <span>Desktop App</span>
+                        </div>
+                        <a href="https://github.com/PhyoeMinKhant/coffee_shop_ai" target="_blank" rel="noopener noreferrer" class="project-link">
+                            View Repository
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" id="project-bms" style="transition-delay:0.15s">
+                    <div class="project-image project-image-placeholder bms-gradient">
+                        <div class="placeholder-icon">🏗️</div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/PhyoeMinKhant/BMS" target="_blank" rel="noopener noreferrer" class="project-overlay-btn" id="bms-github-btn">View on GitHub ↗</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-num">03</div>
+                        <h3>Building Management System</h3>
+                        <p>Local-first BMS for discovering and monitoring field devices via open protocols — featuring live WebSocket telemetry with Modbus TCP, Modbus RTU, and BACnet/IP adapters.</p>
+                        <div class="project-tags">
+                            <span>WebSocket</span>
+                            <span>Modbus TCP</span>
+                            <span>BACnet/IP</span>
+                            <span>IoT</span>
+                        </div>
+                        <a href="https://github.com/PhyoeMinKhant/BMS" target="_blank" rel="noopener noreferrer" class="project-link">
+                            View Repository
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" id="project-dataviz" style="transition-delay:0.2s">
+                    <div class="project-image" style="background-image:url('assets/project_data_visualizer.png')">
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn no-link">Desktop App</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-num">04</div>
                         <h3>Data Visualizer Pro</h3>
-                        <p>A Windows desktop application that loads CSV files and instantly generates interactive charts and diagrams — line, bar, pie, and tabular views — for fast, intuitive data analysis.</p>
+                        <p>Windows desktop application that loads CSV files and instantly generates interactive charts — line, bar, pie, and tabular views — for fast, intuitive data analysis.</p>
                         <div class="project-tags">
                             <span>Python</span>
                             <span>Tkinter</span>
@@ -130,51 +429,140 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="project-card hidden-fade" style="transition-delay: 0.3s">
-                    <div class="project-image" id="project3-img" style="background-image: url('assets/project_geoguessr.png');">
+                <div class="project-card reveal" id="project-iot" style="transition-delay:0.25s">
+                    <div class="project-image project-image-placeholder iot-gradient">
+                        <div class="placeholder-icon">🌤️</div>
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn no-link">IoT Project</span>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <h3>GeoGuessr AI</h3>
-                        <p>An advanced artificial intelligence model capable of determining geographical locations globally based on visual imagery cues.</p>
+                        <div class="project-num">05</div>
+                        <h3>Weather Detection System</h3>
+                        <p>Hands-on IoT project using Arduino to detect and display real-time weather conditions, demonstrating embedded systems and sensor integration skills.</p>
+                        <div class="project-tags">
+                            <span>Arduino</span>
+                            <span>IoT</span>
+                            <span>Sensors</span>
+                            <span>Embedded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card reveal" id="project-datamining" style="transition-delay:0.3s">
+                    <div class="project-image project-image-placeholder mining-gradient">
+                        <div class="placeholder-icon">📊</div>
+                        <div class="project-overlay">
+                            <span class="project-overlay-btn no-link">Group Project</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-num">06</div>
+                        <h3>Data Mining — Fitness Dataset</h3>
+                        <p>Collaborative group project exploring data mining techniques on a fitness dataset — uncovering patterns through preprocessing, feature engineering, and model evaluation.</p>
                         <div class="project-tags">
                             <span>Python</span>
-                            <span>Deep Learning</span>
-                            <span>Computer Vision</span>
+                            <span>Data Mining</span>
+                            <span>Pandas</span>
+                            <span>Scikit-learn</span>
                         </div>
-                        <a href="https://github.com/PhyoeMinKhant/geo_guessor_AI" target="_blank" rel="noopener noreferrer" class="project-link">View Repository ↘</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact hidden-fade">
-            <div class="glass-panel">
-                <h2>Let's build something beautiful.</h2>
-                <p>I'm currently open to new opportunities and exciting collaborations.</p>
-                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpqowlbg" method="POST">
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
-                    <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
-                </form>
+        <!-- CONTACT -->
+        <section id="contact" class="contact">
+            <div class="section-header reveal">
+                <span class="section-label">05 / Contact</span>
+                <h2>Let's Build Something</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-layout reveal">
+                <div class="contact-info">
+                    <h3>Open to Opportunities</h3>
+                    <p>I'm actively seeking internship positions in Software Engineering and AI. If you have an opportunity, project, or just want to connect — I'd love to hear from you.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method-row">
+                            <a href="mailto:phyominkhant@ucsy.edu.mm" class="contact-method" id="contact-email">
+                                <div class="method-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                </div>
+                                <div>
+                                    <span class="method-label">Email</span>
+                                    <span class="method-value">phyominkhant@ucsy.edu.mm</span>
+                                </div>
+                            </a>
+                            <button type="button" class="copy-btn" data-copy="phyominkhant@ucsy.edu.mm" aria-label="Copy email address">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            </button>
+                        </div>
+                        <a href="https://github.com/PhyoeMinKhant" target="_blank" rel="noopener noreferrer" class="contact-method" id="contact-github">
+                            <div class="method-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                            </div>
+                            <div>
+                                <span class="method-label">GitHub</span>
+                                <span class="method-value">PhyoeMinKhant</span>
+                            </div>
+                        </a>
+                        <a href="tel:+959787820831" class="contact-method" id="contact-phone">
+                            <div class="method-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <span class="method-label">Phone</span>
+                                <span class="method-value">09-787820831</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrap glass-card">
+                    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpqowlbg" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Internship Opportunity / Project Collab">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell me about the opportunity..." rows="5" required></textarea>
+                        </div>
+                        <div class="form-status" id="form-status" role="status" aria-live="polite" hidden></div>
+                        <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                        </button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="logo">Dev.<span>Portfolio</span></div>
-            <div class="social-links">
-                <a href="https://github.com/PhyoeMinKhant" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://www.linkedin.com/in/phyoe-min-khant-188753379" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="javascript:void(0)" onclick="navigator.clipboard.writeText('gutspysel.'); alert('Discord handle: gutspysel. copied to clipboard!');">Discord</a>
+        <div class="footer-inner">
+            <a href="#home" class="logo">PMK<span>.</span></a>
+            <p class="footer-tagline">Full Stack Developer &amp; AI Specialist · Yangon, Myanmar</p>
+            <div class="footer-links">
+                <a href="https://github.com/PhyoeMinKhant" target="_blank" rel="noopener noreferrer" id="footer-github">GitHub</a>
+                <a href="mailto:phyominkhant@ucsy.edu.mm" id="footer-email">Email</a>
+                <a href="tel:+959787820831" id="footer-phone">Phone</a>
             </div>
+            <p class="copyright">© 2026 Phyoe Min Khant. Built with passion.</p>
         </div>
-        <p class="copyright">© 2026 Phyoe Min Khant. Built with passion.</p>
     </footer>
 
-    <script src="script.js?v=20260403-1"></script>
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
