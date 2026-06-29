@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* ─── 2. Typewriter Effect (Optimized) ─── */
+    /* ─── 2. Typewriter Effect ─── */
     const phrases = [
         'Full Stack Developer',
         'AI Specialist',
@@ -55,20 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let phraseIdx = 0, charIdx = 0, deleting = false;
         function type() {
             const current = phrases[phraseIdx];
-            // Using textContent minimizes reflows
-            el.textContent = current.substring(0, deleting ? charIdx-- : charIdx++);
-
-            if (!deleting && charIdx > current.length) {
-                deleting = true;
-                setTimeout(type, 1800); // Wait on full phrase
-            } else if (deleting && charIdx < 0) {
-                deleting = false;
-                charIdx = 0;
-                phraseIdx = (phraseIdx + 1) % phrases.length;
-                setTimeout(type, 200); // Quick pause before typing next
+            if (!deleting) {
+                el.textContent = current.slice(0, ++charIdx);
+                if (charIdx === current.length) {
+                    deleting = true;
+                    setTimeout(type, 1800);
+                    return;
+                }
             } else {
-                setTimeout(type, deleting ? 40 : 80);
+                el.textContent = current.slice(0, --charIdx);
+                if (charIdx === 0) {
+                    deleting = false;
+                    phraseIdx = (phraseIdx + 1) % phrases.length;
+                }
             }
+            setTimeout(type, deleting ? 55 : 100);
         }
         setTimeout(type, 600);
     }
@@ -95,11 +96,10 @@ document.addEventListener('DOMContentLoaded', () => {
         (entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const targetId = entry.target.id;
                     navLinks.forEach(link => {
                         link.classList.toggle(
                             'active',
-                            link.getAttribute('href') === `#${targetId}`
+                            link.getAttribute('href') === `#${entry.target.id}`
                         );
                     });
                 }
@@ -109,44 +109,37 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     sections.forEach(s => sectionObserver.observe(s));
 
-    /* ─── 5. Navbar Scroll Style (Debounced / Passive) ─── */
+    /* ─── 5. Navbar Scroll Style ─── */
     const navbar = document.getElementById('navbar');
-    let scrollTimeout;
     const updateNavbar = () => {
-        if (!scrollTimeout) {
-            scrollTimeout = setTimeout(() => {
-                navbar?.classList.toggle('scrolled', window.scrollY > 60);
-                scrollTimeout = null;
-            }, 50); // Checks 20 times a second max (virtually imperceptible lag, massive CPU save)
-        }
+        navbar?.classList.toggle('scrolled', window.scrollY > 60);
     };
     updateNavbar();
     window.addEventListener('scroll', updateNavbar, { passive: true });
 
-    /* ─── 6. Mobile Menu (Cached DOM Queries) ─── */
+    /* ─── 6. Mobile Menu ─── */
     const menuToggle = document.getElementById('menu-toggle');
     const navList = document.getElementById('nav-links');
     if (menuToggle && navList) {
-        const spans = menuToggle.querySelectorAll('span'); // Cached query
-        
         menuToggle.addEventListener('click', () => {
             navList.classList.toggle('open');
             const isOpen = navList.classList.contains('open');
             menuToggle.setAttribute('aria-expanded', isOpen);
-            
+            // Animate hamburger → X
+            const spans = menuToggle.querySelectorAll('span');
             if (isOpen) {
-                if(spans[0]) spans[0].style.transform = 'translateY(7px) rotate(45deg)';
-                if(spans[1]) spans[1].style.opacity = '0';
-                if(spans[2]) spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+                spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
             } else {
                 spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
             }
         });
-
+        // Close on nav link click
         navList.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navList.classList.remove('open');
-                menuToggle.setAttribute('aria-expanded', 'false');
+                const spans = menuToggle.querySelectorAll('span');
                 spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
             });
         });
@@ -209,14 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (contactForm) {
-        const btn = document.getElementById('submit-btn');
-        const btnText = btn?.querySelector('.btn-text');
-
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (!btn || !btnText) return;
-            
+            const btn = document.getElementById('submit-btn');
+            const btnText = btn.querySelector('.btn-text');
             const originalText = btnText.textContent;
+
             btn.disabled = true;
             btnText.textContent = 'Sending…';
             clearFormStatus();
@@ -232,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     btnText.textContent = '✓ Message Sent!';
                     btn.style.background = 'linear-gradient(135deg, #22d3ee, #4ade80)';
-                    setFormStatus('success', "Thanks! Your message was sent — I'll get back to you soon.");
+                    setFormStatus('success', 'Thanks! Your message was sent — I\'ll get back to you soon.');
                     contactForm.reset();
                 } else {
                     btnText.textContent = '✗ Error — Try Again';
@@ -254,24 +245,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ─── 11. Subtle Parallax (Throttled with requestAnimationFrame) ─── */
-    const s1 = document.querySelector('.sphere-1');
-    const s2 = document.querySelector('.sphere-2');
-    
-    if (s1 || s2) {
-        let ticking = false;
-        document.addEventListener('mousemove', (e) => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const x = (e.clientX / window.innerWidth - 0.5) * 30;
-                    const y = (e.clientY / window.innerHeight - 0.5) * 30;
-                    if (s1) s1.style.transform = `translate3d(${x * 0.6}px, ${y * 0.6}px, 0)`;
-                    if (s2) s2.style.transform = `translate3d(${-x * 0.4}px, ${-y * 0.4}px, 0)`;
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        }, { passive: true });
-    }
+    /* ─── 11. Subtle Parallax on Hero Spheres ─── */
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 30;
+        const y = (e.clientY / window.innerHeight - 0.5) * 30;
+        const s1 = document.querySelector('.sphere-1');
+        const s2 = document.querySelector('.sphere-2');
+        if (s1) s1.style.transform = `translate(${x * 0.6}px, ${y * 0.6}px)`;
+        if (s2) s2.style.transform = `translate(${-x * 0.4}px, ${-y * 0.4}px)`;
+    }, { passive: true });
 
 });
